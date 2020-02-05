@@ -1,0 +1,28 @@
+{
+  "name": "TemplateEngine",
+  "version": "1.0.0",
+  "description": "Unit 10 OOP Homework: Template Engine - Employee Summary",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malicemarie/TemplateEngine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malicemarie/TemplateEngine/issues"
+  },
+  "homepage": "https://github.com/malicemarie/TemplateEngine#readme",
+  "dependencies": {
+    "inquirer": "^7.0.4",
+    "jest": "^25.1.0"
+  }
+}

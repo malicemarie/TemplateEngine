@@ -23,6 +23,7 @@
   "homepage": "https://github.com/malicemarie/TemplateEngine#readme",
   "dependencies": {
     "inquirer": "^7.0.4",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "writefile": "^0.2.8"
   }
 }

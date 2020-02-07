@@ -71,33 +71,6 @@ async function promptUser() {
   addEmployee();
 }
 
-//////////
-// ASK IF THEY WOULD LIKE TO ADD ANOTHER EMPLOYEE
-//////
-async function addEmployee() {
-  try {
-    const answer = await inquirer.prompt([
-      {
-        type: "list",
-        name: "addnew",
-        message: "Would you like to add a new employee?",
-        choices: ["Manager", "Intern", "Engineer", "No"]
-      }
-    ]);
-    if (answer.addnew === "Manager") {
-      promptUser();
-    } else if (answer.addnew === "Intern") {
-      addIntern();
-    } else if (answer.addnew === "Engineer") {
-      addEngineer();
-    } else {
-      return;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 ///promt to add intern info
 //////
 
@@ -133,11 +106,13 @@ async function addIntern() {
         name: "intern-email",
         message: "What is your Intern's email?",
         validate: answer => {
-          if (isNaN(answer) && answer !== " ") {
+          if (
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(answer) &&
+            answer !== " "
+          ) {
             return true;
-          } else {
-            throw Error("Please enter your Interns email");
           }
+          return Error("Please enter a valid email address!");
         }
       },
       {
@@ -195,11 +170,13 @@ async function addEngineer() {
         name: "engineer-email",
         message: "What is your engineer's email?",
         validate: answer => {
-          if (isNaN(answer) && answer !== " ") {
+          if (
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(answer) &&
+            answer !== " "
+          ) {
             return true;
-          } else {
-            throw Error("Please enter your Interns email");
           }
+          return Error("Please enter a valid email address!");
         }
       },
       {
@@ -220,6 +197,32 @@ async function addEngineer() {
     console.log(error);
   }
   addEmployee();
+}
+//////////
+// ASK IF THEY WOULD LIKE TO ADD ANOTHER EMPLOYEE
+//////
+async function addEmployee() {
+  try {
+    const answer = await inquirer.prompt([
+      {
+        type: "list",
+        name: "addnew",
+        message: "Would you like to add a new employee?",
+        choices: ["Manager", "Intern", "Engineer", "No"]
+      }
+    ]);
+    if (answer.addnew === "Manager") {
+      promptUser();
+    } else if (answer.addnew === "Intern") {
+      addIntern();
+    } else if (answer.addnew === "Engineer") {
+      addEngineer();
+    } else {
+      return;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 promptUser();
